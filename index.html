@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AI 文生图</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<script>
+    const password = prompt("请输入访问密码：");
+    if (password !== "123221") { // ← 自定义密码
+        document.body.innerHTML = `
+        <div style="color: white; text-align: center; margin-top: 20%;">
+          <h1>🚫 密码错误，禁止访问</h1>
+        </div>
+      `;
+    } else {
+        document.write(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="1728" height="1117" viewBox="0 0 1728 1117" fill="none">
+          <rect width="1728" height="1117" fill="#353346"/>
+        </svg>
+        <header>
+          <h1>AI文生图</h1>
+        </header>
+        <section class="images-section"></section>
+        <section class="bottom-section">
+          <div class="input-container">
+            <label for="prompt-input" style="display: none;">请输入提示词</label>
+            <input id="prompt-input" placeholder="请输入提示词..." />
+            <div id="submit-icon">➢</div>
+          </div>
+        </section>
+        <script src="app.js"><\/script>
+      `);
+    }
+</script>
+</body>
+</html>

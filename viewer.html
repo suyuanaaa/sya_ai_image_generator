@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 图片展示</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    #display-image {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover; /* 保持比例填满背景 */
+    }
+  </style>
+</head>
+<body>
+<img id="display-image" src="" alt="" />
+
+<script>
+  console.log("✅ viewer.html 脚本已加载");
+
+  const JSONBIN_API_KEY = "$2a$10$rPcjYa2JskbTj..4LxWai.DJWt2TW9A7Uc54eSZFfBY3jDcN5zLiO";
+  const JSONBIN_URL = "https://api.jsonbin.io/v3/b/686e98cb73529642b377cf2f/latest";
+
+  const updateImage = async () => {
+    try {
+      const response = await fetch(JSONBIN_URL, {
+        headers: {
+          "X-Master-Key": JSONBIN_API_KEY
+        }
+      });
+      const result = await response.json();
+      const url = result.record?.currentImage;
+
+      if (url) {
+        document.getElementById("display-image").src = url;
+      }
+    } catch (err) {
+      console.error("❌ 获取图片失败：", err);
+    }
+  };
+
+  updateImage();
+  setInterval(updateImage, 3000);
+</script>
+</body>
+</html>
