@@ -2,7 +2,12 @@
 const JSONBIN_API_KEY = "$2a$10$rPcjYa2JskbTj..4LxWai.DJWt2TW9A7Uc54eSZFfBY3jDcN5zLiO";
 const JSONBIN_URL = "https://api.jsonbin.io/v3/b/686e98cb73529642b377cf2f";
 
-const API_KEY = "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"
+let API_KEY = "";
+
+if (!API_KEY) {
+  API_KEY = prompt("请输入你的 OpenAI API Key：");
+}
+
 const submitIcon = document.querySelector("#submit-icon")
 const inputElement = document.querySelector("#prompt-input");
 const imageSection = document.querySelector('.images-section')
